@@ -1,0 +1,40 @@
+{% extends "base_formu.html" %}
+{% load static %}
+{% block contenido %}
+<div class="container-fluid">
+
+    <div class="container">
+        <h1>Galeria de imagenes: Ultimas Noticias</h1>
+
+        <form action="{% url 'FILTROC' %}" method="POST">
+            {% csrf_token %}
+            Filtro por Categoria de Noticias:
+            <select name="cboCategoria" id="cboCategoria">
+                {% for reg in categorias %}
+                <option>{{reg.nombre_noticia}}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Filtrar">
+        </form>
+    </div>
+    <div class="container" style="margin-top: 15px;padding: 15px;">
+        {% for item in noticias %}
+        <div class="row" style="padding:15px;">
+
+            <div class="col-6">
+                <a href="{{item.imagen.url}}" data-title="{{item.titulo}}"></a>
+                <img src="{{item.imagen.url}}" alt="" width="250px" height="250px">
+            </div>
+            <div class="col-6">
+                <h3 style="text-align: center;">{{item.titulo}}</h3>
+                <h5>
+                    <a href="{% url 'NOTI' item.titulo%}">Leer Noticia</a>
+                </h5>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+</div>
+{% endblock contenido %}

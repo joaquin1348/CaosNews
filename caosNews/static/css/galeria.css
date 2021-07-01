@@ -1,0 +1,9 @@
+*{
+    padding-top: 15px;
+}
+.row m-2{
+    max-width: 100%;
+}
+.container h1{
+    text-align: center;
+}

@@ -1,0 +1,12 @@
+body{
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(234,249,251,0.63)0.1%,rgba(239,249,251,0.63)90.1%);
+}
+.container p {
+    text-align: center;
+}
+
+.btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

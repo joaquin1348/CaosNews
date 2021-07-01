@@ -1,0 +1,234 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caos news</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+        rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/estilo.css' %}">
+    <link rel="stylesheet" href="{% static 'font.css' %}">
+
+
+</head>
+
+<body>
+    <div class="container-fluid">
+
+        <!-- Barra de navegacion -->
+
+
+        <div class="row">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">
+
+                        <img class="logo" src="{% static 'img/6b9b49a725284506aae8a14b76a21b77.ico' %}" alt=""
+                            width="70%">
+
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="index2.html">Inicio</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Autores destacados</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Nosotros</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="contacto.html">Contactanos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="inicio-registrar.html"><strong>iniciar
+                                        sesión</strong></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="inicio-registrar.html"><strong>Registrarse</strong></a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="galeria.html" id="navbarDropdown"
+                                    role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Galeria
+                                </a>
+
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="galeria.html">Politica</a></li>
+                                    <li><a class="dropdown-item" href="galeria.html">Deportes</a></li>
+                                    <li><a class="dropdown-item" href="galeria.html">Internacional</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="#">Noticias Destacadas</a></li>
+                                </ul>
+
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="{% url 'IND' %}">Inicio</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Autores destacados</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="nosotros.html">Nosotros</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="contacto.html">Contactanos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{% url 'FORMU' %}"><strong>iniciar
+                                        sesión</strong></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{% url 'FORMU' %}"><strong>Registrarse</strong></a>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="{% url 'GALE' %}" id="navbarDropdown"
+                                    role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Galeria
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="{% url 'GALE' %}">Politica</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'GALE' %}">Deportes</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'GALE' %}">Internacional</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="#">Noticias Destacadas</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <form class="d-flex" action="">
+                            <input class="form-control me-2" name="txtBuscar" type="search" placeholder="Buscar"
+                                aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit">Buscar</button>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+
+            <!--Contenido-->
+            <div class="destacado">
+                <h1><strong>China: Se prepara lanzamiento tripulado
+                        de módulo central de la estación espacial japonesa </strong></h1>
+                <ul>
+                    <p>
+                        Según lo planeado, el conjunto será sometido posteriormente a varias pruebas de prelanzamiento y
+                        pruebas conjuntas.
+                    </p>
+                </ul>
+                <img id="noticia3"
+                    src="https://www.cooperativa.cl/noticias/site/artic/20210423/imag/foto_0000000920210423155550.jpg"
+                    alt="" max width="85%">
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h4>Autor de la noticia</h4>
+                    <p> Benito Ovalle.</p>
+                    <h4>Fecha de la Noticia</h4>
+                    <p> 27 de Abril del año 2021.</p>
+                    <h4>Categoria de la noticia</h4>
+                    <p> Internacional.</p>
+                </div>
+                <div class="col">
+                    <h2>Historia</h2>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi aliquam modi quos ullam earum
+                        similique veritatis, unde quas voluptate ipsa? Nihil odit ratione maxime neque saepe blanditiis
+                        ipsam sunt eligendi. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Explicabo maxime
+                        aspernatur tenetur placeat quos rem accusamus atque minima quidem culpa, exercitationem laborum
+                        corrupti repellat illum reiciendis magni blanditiis doloribus odio! Lorem ipsum dolor sit amet
+                        consectetur adipisicing elit. Eius eveniet iusto porro laboriosam explicabo harum accusamus
+                        deleniti vitae, laborum pariatur. Itaque possimus placeat nemo architecto. Non ex assumenda
+                        natus necessitatibus. </p>
+                </div>
+                <div class="col">
+                    <!--Localizacion-->
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d391568.2687211551!2d116.11727352512264!3d39.93854659294904!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x35f05296e7142cb9%3A0xb9625620af0fa98a!2zUGVrw61uLCBDaGluYQ!5e0!3m2!1ses-419!2scl!4v1619483097948!5m2!1ses-419!2scl"
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Carrusel-->
+
+    <div class="row">
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                    aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                    aria-label="Slide 2"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+
+                    <div class="carrousel-item">
+                        <img src="https://th.bing.com/th/id/OIP.HxRG3kfMSJ3oWzy_34G-fgHaE0?pid=ImgDet&rs=1"
+                            class="d-block w-100" height="600px" alt="..." width="100%">
+                    </div>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3> <strong>Según lo planeado, el conjunto será sometido posteriormente a varias pruebas de
+                                prelanzamiento y pruebas conjuntas.</strong> </h3>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://th.bing.com/th/id/Rdf304e168ba4e361b3387787b9f4c4e1?rik=RTf2ol%2bwOLqYrg&riu=http%3a%2f%2fwww.yucatan.com.mx%2fwp-content%2fuploads%2f2018%2f03%2fcohete_espacial_chino.jpg&ehk=wCymPULabJaVoB7V98zEt0xIuIJaPjS0vL6PxFeqZgM%3d&risl=&pid=ImgRaw"
+                        class="d-block w-100" height="10%" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3> <strong>Tianzhou 2, una nave espacial de carga y reabastecimiento de combustible, visitará
+                                y atracará con el Tianhe de 18 metros y 24 toneladas en órbita terrestre baja.</strong>
+                        </h3>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://th.bing.com/th/id/R9012cd1ebd2cf3ae72f5248c788895b6?rik=Nxyd1pgty5iRyw&riu=http%3a%2f%2finfo7rm.blob.core.windows.net.optimalcdn.com%2fimages%2f2019%2f01%2f15%2fpresidenteolimpico.jpg&ehk=FpSQ3%2bqraAaUjvn8cVg7tDdq09roAc304440%2bu2VcQw%3d&risl=&pid=ImgRaw"
+                        class="d-block w-100" height="10%" width="" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3> <strong> Este vuelo es una etapa importante", en el programa espacial chino, subraya Chen
+                                Lan.
+                            </strong> </h3>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+
+
+    <div class="social-bar">
+        <a href="https://www.facebook.com" class="icon icon-facebook" target="_blank"></a>
+        <a href="https://twitter.com" class="icon icon-twitter" target="_blank"></a>
+        <a href="https://www.youtube.com" class="icon icon-youtube" target="_blank"></a>
+        <a href="https://www.instagram.com" class="icon icon-instagram" target="_blank"></a>
+    </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block contenido %}
+<div class="container-fluid">
+
+    <div class="container">
+        <h1>Autores Destacados uwu</h1>
+
+        <form action="{% url 'FILTROA' %}" method="POST">
+            {% csrf_token %}
+            Filtro por Autores de Noticias:
+        <select name="txtAutor" id="txtAutor">
+            {% for x in noticias %}
+            <option>{{x.autor}}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Filtrar">
+        </form>
+    </div>
+
+    
+</div>
+{% endblock contenido %}

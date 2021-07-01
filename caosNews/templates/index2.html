@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block contenido%}
+<!--Acerca de nosotros-->
+<section id="blog">
+    <div class="row">
+        <div class="periodistas">
+            <div class="col">
+                <div class="container-fluid py-5">
+                    <h1 class="">Top Periodistas</h1>
+                    <ol class="list-group list-group-numbered">
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">Subheading</div>
+                                Cras justo odio
+                            </div>
+                            <span class="badge bg-primary rounded-pill">08</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">Subheading</div>
+                                Cras justo odio
+                            </div>
+                            <span class="badge bg-primary rounded-pill">10</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">Subheading</div>
+                                Cras justo odio
+                            </div>
+                            <span class="badge bg-primary rounded-pill">12</span>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    </div>
+    </div>
+</section>
+
+</div>
+</div>
+
+
+
+<!--Contenido-->
+<main>
+    <div class="destacado">
+        <h1><strong>Destacado de la Semana</strong></h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam soluta quam quae consequatur deleniti
+            nemo
+            repudiandae. Quae, nostrum ipsum dignissimos voluptatem odio beatae minima, consectetur nisi iste
+            facilis
+            veritatis molestias. </p>
+    </div>
+    <div class="row">
+        <div class="col">
+            <img src="https://www.cooperativa.cl/noticias/site/artic/20210426/imag/foto_0000000120210426114056.jpg"
+                alt="" width="100%">
+            <h2>Chernóbil: A 35 años de la tragedia que marcó a todos, especialmente a los nacidos en 1986</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti quasi dolores, ipsum velit nemo
+                consequuntur. Ea voluptate harum beatae officiis, pariatur impedit tempore quos quis doloribus
+                cumque, veniam sit quam.</p>
+            <a href="noticia1.html"> <img src="{% static 'img/boton.jpg' %}" alt="" width="60%" height="15%"></a>
+
+
+        </div>
+        <div class="col">
+            <img src="https://www.cooperativa.cl/noticias/site/artic/20210425/imag/foto_0000000120210425192621.jpg"
+                alt="" width="100%">
+            <h2>Brasil superó las 390.000 muertes y abril ya es el mes más letal de la pandemia</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur maiores quis, distinctio
+                perspiciatis, non magni laborum quas quam ex, id eos ipsa tenetur modi unde esse et inventore quos
+                repudiandae.</p>
+            <a href="noticia2.html"> <img src="{% static 'img/boton.jpg' %}" alt="" width="60%" height="15%"></a>
+        </div>
+        <div class="col">
+            <img src="https://www.cooperativa.cl/noticias/site/artic/20210423/imag/foto_0000000920210423155550.jpg"
+                alt="" width="100%">
+            <h2>China prepara lanzamiento de módulo central de la estación espacial</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga doloremque non commodi iusto quo
+                laborum tempore exercitationem dolores dolor deleniti? Eos exercitationem quod enim est natus eum
+                reprehenderit nisi. Consectetur.</p>
+            <a href="noticia3.html"> <img src="{% static 'img/boton.jpg' %}" alt="" width="60%" height="15%"></a>
+        </div>
+
+    </div>
+    </div>
+    <div class="multimedia">
+        <h1> <strong>Multimedia</strong></h1>
+    </div>
+    <div class="row">
+        <div class="col">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/d6LYvr1hiZg"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+            <h3>Preocupación internacional por la mala gestión de Brasil</h3>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae nam magni quis sapiente culpa
+                sint
+                quo nostrum reiciendis amet, vero, totam provident doloribus alias deleniti fugit doloremque fuga
+                dolore. Officiis.</p>
+        </div>
+
+        <div class="col">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/8N4LKDFtHjo"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+            <h3>Revelan nuevo video del forcejeo para someter a Floyd</h3>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae nam magni quis sapiente culpa
+                sint
+                quo nostrum reiciendis amet, vero, totam provident doloribus alias deleniti fugit doloremque fuga
+                dolore. Officiis.</p>
+        </div>
+    </div>
+</main>
+<footer>
+    <div class="form-container bg-light h-100">
+        <article class="card-body mx-auto" style="max-width: 1000px;">
+            <h4 class="card-title mt-3 text-center">Feriados</h4>
+            <p class="text-center"> En estas siguientes fechas no se publican noticas, gracias por
+                su
+                comprension</p>
+
+            <p class="divider-text">
+                <span class="bg-light"></span>
+            </p>
+            <div class="list-container" id="container">
+                <ul class="column-list" id="lista-feriados"></ul>
+            </div>
+        </article>
+    </div>
+</footer>
+{% endblock contenido%}

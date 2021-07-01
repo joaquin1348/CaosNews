@@ -1,0 +1,143 @@
+{% extends "base_formu.html" %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'font.css">
+<link rel="stylesheet" href="{% static 'css/contacto.css' %}">
+<script src="{% static 'js/sweetalert2.all.min.js' %}"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+{% endblock css %}
+{% block contenido %}
+<section id='bienvenido'>
+  <h1 class="titulo">Sistema de administracion de Noticias</h1>
+  <h3>Usuario: <b>{{user.username}}</b></h3>
+</section>
+<div class="container pt-md-2">
+  <div class="row justify-content-md-center">
+    <form enctype="multipart/form-data" style="background-color: brown; opacity: 75%;color: white;border-radius: 8px;"
+      action="{% url 'REG' %}" method="POST">
+      {% csrf_token %}
+      <div class="col-12 d-flex justify-content-center">
+        <label>Titulo</label>
+      </div>
+      <div class="col-12 d-flex justify-content-center">
+        <input class="col-sm" type="text" name="txtTitulo" id="txtTitulo" placeholder="Ingrese Titulo" required
+          minlength="2" maxlength="80">
+      </div>
+      <div class="col-12 d-flex justify-content-center">
+        <label>Nombre de Autor</label>
+      </div>
+
+      <div class="col-12 d-flex justify-content-center">
+        <input class="col-sm" type="text" name="txtAutor" id="txtAutor" placeholder="Ingrese nombre de Autor" required
+          minlength="2" maxlength="20">
+      </div>
+      <div class="col-12 d-flex justify-content-center">
+        <label>Descripción</label>
+      </div>
+      <div class="col-12 d-flex justify-content-center">
+        <input class="col-sm" type="text" name="txtDesc" id="txtDesc" placeholder="Ingrese Descripcion" required
+          minlength="2" maxlength="350">
+      </div>
+      <div class="col-12 d-flex justify-content-center">
+        <label>Imagenes</label>
+      </div>
+      <div class="col-12 d-flex justify-content-center">
+        <input class="col-xl" type="file" name="txtImg" id="txtImg" placeholder="Ingrese Imagenes" required>
+      </div>
+      <select name="cboCategoria" id="cboCategoria">
+        {% for item in Categorias %}
+        <option> {{item.nombre_noticia}}</option>
+        {% endfor %}
+      </select>
+
+      <div class="col-12 d-flex justify-content-center">
+        <input type="submit" name="btnAgregar" value="Agregar">
+      </div>
+  </div>
+</div>
+</form>
+<div>
+  <h1>{{mensaje}}</h1>
+</div>
+</div>
+</div>
+<div style="text-align: center;font-size: xx-large;">
+  Administración de Noticias
+</div>
+<div>
+  <table class="table table-info">
+    <thead>
+      <tr>
+        <th>Titulo</th>
+        <th>Autor</th>
+        <th>Descripcion</th>
+        <th>Imagen</th>
+        <th>Categoria</th>
+        <th>Operaciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in noticia %}
+      <tr>
+        <td>{{item.titulo}}</td>
+        <td>{{item.autor}}</td>
+        <td>{{item.descripcion}}</td>
+        <td>
+          <img src="{{item.imagen.url}}" alt="" width="250px" height="250px">
+        </td>
+        <td>{item.nombre_noticia}</td>
+        <td>
+          <button class="btn btn-danger" onclick="eliminar('{{item.titulo}}')">Eliminar</button>
+          <button class="btn btn-warning">Modificar</button>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock contenido %}
+{% block js %} 
+<!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+  function eliminar(titulo) {
+    Swal.fire({
+      title: 'Desea eliminar la noticia?'+titulo+' ?',
+      showCancelButton: true,
+      confirmButtonText: 'Eliminar',
+      denyButtonText: 'Cancelar',
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        location.href='/eliminar/'+titulo+'/';
+      }
+    })
+
+  }
+</script>
+{% endblock js %}
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+
+    </div>
+    <div class="col">
+      2 of 2
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      1 of 3
+    </div>
+    <div class="col">
+      2 of 3
+    </div>
+    <div class="col">
+      3 of 3
+    </div>
+  </div>
+</div>

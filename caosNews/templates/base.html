@@ -1,0 +1,241 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caos news</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/estilo.css' %}">
+    <link rel="stylesheet" href="{% static 'font.css' %}">
+    <link rel="icon" href="{% static 'img/sticker_4.png' %}">
+    {% block css %}
+
+    {% endblock css %}
+</head>
+
+<body>
+    <header>
+        <div class="container-fluid">
+
+            <!-- Barra de navegacion -->
+            {% block nav %}
+            <div class="row">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" href="#">
+
+
+
+                            <img class="logo" src="{% static 'img/6b9b49a725284506aae8a14b76a21b77.ico' %}" alt=""
+                                width="70%">
+
+                        </a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item">
+                                    <a class="nav-link" aria-current="page" href="{% url 'IND' %}">Inicio</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'AUTOR' %}">Autores destacados</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'NOS' %}">Nosotros</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'CONT' %}">Contactanos</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'GALE' %}">Galeria</a>
+                                </li>
+
+                                <li class="nav-item dropdown">
+
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+
+                                        Noticias
+
+                                    </a>
+
+
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                                        <li>
+
+                                            <h6 class="dropdown-header">Por Categoria</h6>
+
+                                        </li>
+
+                                        {% for x in categorias %}
+
+                                        <li>
+                                            <a class="dropdown-item" href="">{{x.nombre_noticia}}</a>
+                                        </li>
+
+                                        {% endfor %}
+
+                                        <li>
+
+                                            <hr class="dropdown-divider">
+
+                                        </li>
+                                    </ul>
+                                </li>
+                                {% if user.is_authenticated %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'REG' %}">Adm. de Noticias</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'CERRAR' %}">Cerrar Sesión</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="">Bienvenido: {{user.first_name}} {{user.last_name}}</a>
+                                </li>
+                                {% else %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'INICIAR' %}">Login</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'REGISTRARSE' %}">Registrarse</a>
+                                </li>
+                                {% endif %}
+                            </ul>
+
+
+                            <form class="d-flex" action="">
+                                <input class="form-control me-2" name="txtBuscar" type="search" placeholder="Buscar"
+                                    aria-label="Search">
+                                <button class="btn btn-outline-success" type="submit">Buscar</button>
+                            </form>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            {% endblock nav %}
+    </header>
+    <!-- Carrusel-->
+    <div class="row">
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                    aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                    aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3"
+                    aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+
+                    <div class="carrousel-item">
+                        <img src="https://www.cooperativa.cl/noticias/site/artic/20200218/imag/foto_0000008020200218131350.jpg"
+                            class="d-block w-100" height="600px" alt="..." width="100%">
+                    </div>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3> <strong> Google Earth liberó imágenes satelitales de Chile en 4K </strong> </h3>
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi explicabo blanditiis
+                            vero voluptates
+                            labore officia quas fugit ab incidunt error, repellendus nobis nam modi quam a harum
+                            quasi sequi illum.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://www.nationalgeographic.com.es/medio/2018/06/08/el-cuarto-arbitro-llega-al-futbol_0601534d.jpg"
+                        class="d-block w-100" height="600px" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3> <strong> ¿La tecnología está matando al fútbol? </strong> </h3>
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi explicabo blanditiis
+                            vero voluptates
+                            labore officia quas fugit ab incidunt error, repellendus nobis nam modi quam a harum
+                            quasi sequi illum.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://canamo.net/sites/default/files/styles/max_1300x1300/public/images/2021/03/24/hojas-que-comen-3.jpg?itok=ZXj1Z9dS"
+                        class="d-block w-100" height="600px" width="" alt="...">
+
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3> <strong> La ONU reconoce oficialmente las propiedades medicinales del cannabis
+                            </strong> </h3>
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi explicabo blanditiis
+                            vero voluptates
+                            labore officia quas fugit ab incidunt error, repellendus nobis nam modi quam a harum
+                            quasi sequi illum.</p>
+                        </p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.pexels.com/photos/4613911/pexels-photo-4613911.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                        class="d-block w-100" height="500px" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3> <strong> EE. UU.: nueva polémica tras muerte de una joven afroamericana a manos de la
+                                policía </strong> </h3>
+                        <p>Some representative placeholder content for the third slide.</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+    </section>
+
+    </div>
+    </div>
+
+
+
+    <!--Contenido-->
+    <main>
+        {% block contenido%}
+
+        {% endblock contenido%}
+    </main>
+
+    <!--Social Bar !-->
+
+    <div class="social-bar">
+        <a href="https://www.facebook.com" class="icon icon-facebook" target="_blank"></a>
+        <a href="https://twitter.com" class="icon icon-twitter" target="_blank"></a>
+        <a href="https://www.youtube.com" class="icon icon-youtube" target="_blank"></a>
+        <a href="https://www.instagram.com" class="icon icon-instagram" target="_blank"></a>
+    </div>
+
+    <script src="cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
+
+        </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/validaciones.js' %}"></script>
+    <script src="{% static 'js/funciones.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
+    <div class="col-md-12">
+        <!--FERIADOS-->
+        {% block js %}
+
+        {% endblock js %}
+    </div>
+</body>
+
+</html>
