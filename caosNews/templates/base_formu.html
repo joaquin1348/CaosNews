@@ -56,40 +56,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'GALE' %}">Galeria</a>
                     </li>
-
-                    <li class="nav-item dropdown">
-
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-
-                            Noticias
-
-                        </a>
-
-
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-                            <li>
-
-                                <h6 class="dropdown-header">Por Categoria</h6>
-
-                            </li>
-
-                            {% for x in categorias %}
-
-                            <li>
-                                <a class="dropdown-item" href="">{{x.nombre_noticia}}</a>
-                            </li>
-
-                            {% endfor %}
-
-                            <li>
-
-                                <hr class="dropdown-divider">
-
-                            </li>
-                        </ul>
-                    </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'REG' %}">Adm. de Noticias</a>

@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'caosNews',#agregar la aplicacion al proyecto
+    'api',
+    'rest_framework', # libreria de creacion y consumo de API REST
+
 ]
 
 MIDDLEWARE = [

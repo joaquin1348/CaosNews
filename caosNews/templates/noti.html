@@ -1,23 +1,23 @@
 {% extends "base_formu.html" %}
 {% load static %}
 {% block contenido %}
-<section id="blog">
-    <h2 style="text-align: center;">Noticia #1</h2>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-4" style="background-color:#ccc">
-                <article style="text-align: center;">
-                    <img src="{{noticia.imagen.url}}" alt="" width="250px" height="250px">
-                </article>
-            </div>
-            <div class="col-lg-4">
-                <h1>Titulo: {{noticia.titulo}}</h1>
-                    <h2>Autor: {{noticia.autor}}</h2>
-                        <h3>Descripcion: {{noticia.descripcion}}</h3>
-                            <h4>Categoria: {{noticia.categoria.nombre_noticia}}</h4>
+<div style="text-align: center;font-size: xx-large;">
+    Noticia #1
+<div>
+<table class="table table-info">
+<thead>
+    <tr>
+        <img src="{{noticia.imagen.url}}" alt="" width="250px" height="250px">
+    </tr>
+    <tr><h1 style="text-align: center;color:red;">Titulo: {{noticia.titulo}}</h1></tr>
+    <tr><h2>Autor: {{noticia.autor}}</h2></tr>
+    <tr><h3>Descripcion: {{noticia.descripcion}}</h3></tr>
+    <tr><h4>Categoria: {{noticia.categoria.nombre_noticia}}</h4></tr>
+</thead>
+</table>
+</div>
 
-            </div>
-        </div>
-    </div>
-</section>
+
+
+</div>
 {% endblock contenido %}

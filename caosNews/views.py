@@ -10,9 +10,9 @@ from django.contrib.auth import authenticate,logout,login
 from django.contrib.auth.decorators import login_required,permission_required
 
 def index(request):
-    
+    noticias = Noticia.objects.all()
     cat = Categoria.objects.all()
-    context = {"categorias":cat}
+    context = {"categorias":cat,"noticias":noticias}
     return render(request,"index2.html",context)
 
 
@@ -23,7 +23,9 @@ def galeria(request):
     return render(request,"galeria.html",contexto)
 
 def autores(request):
-    return render(request,"autores.html")
+    noticias_t = Noticia.objects.all()
+    contexto = {"noticias":noticias_t}
+    return render(request,"autores.html",contexto)
     
 def nosotros(request):
     return render(request,"nosotros.html")
@@ -86,11 +88,12 @@ def filtro_categoria(request):
     return render(request,"galeria.html",contexto)
 
 def filtro_autor(request):
-    noticias = Noticia.objects.all()
+    noticias_t = Noticia.objects.all()
     if request.POST:
         autor = request.POST.get("txtAutor")
-        noticias = Noticia.objects.filter(autor=autor)
-    contexto = {"noticias":noticias,"autor":autor}
+        noticias_a = Noticia.objects.filter(autor=autor)
+        contexto = {"noticias":noticias_t,"noti_a":noticias_a}
+        
     return render(request,"autores.html",contexto)
     
 

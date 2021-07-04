@@ -6,94 +6,51 @@
 {% endblock css %}
 
 {% block contenido %}
-<div class="container">
-    <section class="mb-4">
-        <h2 class="h1-responsive font-weight-bold text-center my-5">Contactenos</h2>
-        <p w-responsive mx-auto mb-5> Para que podamos entregarte una pronta respuesta , porfavor llena los
-            datos que se te piden a continuacion
-            para poder comunicarnos contigo.
-        </p>
+<div class="container pt-md-2">
+    <div class="row justify-content-md-center">
+        <form style="background-color: brown; opacity: 75%;color: white;border-radius: 8px;" method="POST"
+            action="" onsubmit="">
+            {% csrf_token %}    
+            <h1 class="titulo">Contactenos</h1>
 
-        <div class="row">
-
-            <div class="col-md-9 mb-md-0 mb-5">
-                <form id="contact-form">
-
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="md-form mb-0">
-                                <input class="col-sm" type="text" name="txtNombre" id="txtNombre"
-                                    placeholder="ingrese nombre" required minlength="3" maxlength="50"
-                                    pattern="[A-Za-z ]{3,50}"
-                                    title="solo ingrese texto minimo 3 y maximo 50 caracteres">
-                                <label for="">Tu nombre</label>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="md-form mb-0">
-                                <input class="col-xl" type="email" name="txtEmail" id="txtEmail"
-                                    placeholder="ingrese correo" required>
-                                <label for="">Correo Electronico</label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="md-form mb-0">
-                                <input class="col-sm" type="text" name="txtApellidos" id="txtApellidos"
-                                    placeholder="ingrese apellidos" required minlength="3" maxlength="50"
-                                    pattern="[A-Za-z ]{3,50}"
-                                    title="solo ingrese texto minimo 3 y maximo 50 caracteres">
-                                <label>Apellidos</label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="md-form">
-                                <textarea type="text" name="comentario" id="" class="form-control md-textarea" cols="30"
+            <div class="col-12 d-flex justify-content-center">
+                <label>Nombre</label>
+            </div>
+            <div class="col-12 d-flex justify-content-center">
+                <input class="col-sm" type="text" name="txtNombre" id="txtNombre" placeholder="Ingrese Nombre" required
+                    minlength="2" maxlength="15">
+            </div>
+            <div class="col-12 d-flex justify-content-center">
+                <label>Apellidos</label>
+            </div>
+            <div class="col-12 d-flex justify-content-center">
+                <input class="col-sm" type="text" name="txtApellidos" id="txtApellidos" placeholder="Ingrese Apellidos"
+                    required minlength="2" maxlength="15">
+            </div>
+            <div class="col-12 d-flex justify-content-center">
+                <label>Correo electronico</label>
+            </div>
+            <div class="col-12 d-flex justify-content-center">
+                <input class="col-xl" type="email" name="txtEmail" id="txtEmail" placeholder="Ingrese correo" required>
+            </div>
+            <div class="col-12 d-flex justify-content-center">
+                <label>Comentario</label>
+            </div>
+            <div class="col-12 d-flex justify-content-center">
+                <textarea type="text" name="txtComentario" id="txtComentario" class="form-control md-textarea" cols="30"
                                     rows="3"></textarea>
-                                <label for="comentario">Comentario</label>
-
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="text-center text-md-left">
-                        <button class="btn btn-elegant" value="validar Formulario" onclick="validarForm()"
-                            type="submit">Enviar</button>
-                    </div>
-
-                </form>
             </div>
-
-
-            <div class="col-md-3 text-center text-primary">
-                <ul class="list-unstyled mb-0">
-                    <li>
-                        <i class="fas fa-map-marker-alt fa-2x"></i>
-                        <p class="text-dark">Santiago de chile , #1245 Puente alto</p>
-                    </li>
-
-                    <li>
-                        <i class="fas fa-phone mt-4 fa-2x"></i>
-                        <p class="text-dark">(fono)+56 9 45672312 </p>
-                    </li>
-
-                    <li>
-                        <i class="fas fa-envelope mt-4 fa-2x"></i>
-                        <p class="text-dark">caosnews@caos.com</p>
-                    </li>
-                </ul>
-
+            
+            <div class="col-12 d-flex justify-content-center">
+                <input type="submit" name="btn-enviar" value="Enviar">
             </div>
-        </div>
-    </section>
+    </div>
 </div>
+</form>
+</div>
+
+</div>
+
 {% endblock contenido %}
 
 {% block js %}

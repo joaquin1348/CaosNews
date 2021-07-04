@@ -14,6 +14,8 @@ class Noticia(models.Model):
     descripcion = models.TextField(max_length=350)
     imagen = models.ImageField(upload_to='noticias',null=True)
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
+    comentario = models.TextField (null=True,default='sin comentario')
+    publicar = models.BooleanField(default=False)
     
     def _str_(self):
         return self.nombre
