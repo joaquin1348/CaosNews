@@ -77,6 +77,8 @@
         <th>Imagen</th>
         <th>Categoria</th>
         <th>Operaciones</th>
+        <th>Publicar</th>
+        <th>Comentario</th>
       </tr>
     </thead>
     <tbody>
@@ -88,11 +90,19 @@
         <td>
           <img src="{{item.imagen.url}}" alt="" width="250px" height="250px">
         </td>
-        <td>{item.nombre_noticia}</td>
+        <td>{{item.categoria.nombre_noticia}}</td>
         <td>
           <button class="btn btn-danger" onclick="eliminar('{{item.titulo}}')">Eliminar</button>
-          <button class="btn btn-warning">Modificar</button>
+          <button class="btn btn-warning" onclick="modificar('{{item.titulo}}')">Modificar</button> 
         </td>
+        <td>
+          {% if item.publicar %}
+              PUBLICADO
+          {% else %}
+             <div style="color: red;">NO PUBLICADO</div> 
+          {% endif %}
+        </td>
+        <td>{{item.comentario}}</td>
       </tr>
       {% endfor %}
     </tbody>
@@ -115,6 +125,12 @@
         location.href='/eliminar/'+titulo+'/';
       }
     })
+
+  }
+</script>
+<script>
+  function modificar(titulo) {
+    location.href='/buscar_modificar/'+titulo+'/';
 
   }
 </script>

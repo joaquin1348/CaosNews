@@ -1,0 +1,96 @@
+{% extends "base_formu.html" %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'font.css">
+<link rel="stylesheet" href="{% static 'css/contacto.css' %}">
+<script src="{% static 'js/sweetalert2.all.min.js' %}"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+{% endblock css %}
+{% block contenido %}
+<div class="container pt-md-2">
+    <div class="row justify-content-md-center">
+        <form style="background-color: brown; opacity: 75%;color: white;border-radius: 8px;" method="post"
+            action="{% url 'MODI'%}" onsubmit="return validaPass()">
+            {% csrf_token %}
+            <h1 class="titulo">Modificar Noticia</h1>
+
+            <div class="col-12 d-flex justify-content-center">
+                <label>Titulo</label>
+            </div>
+            <div class="col-12 d-flex justify-content-center">
+                <input class="col-sm" type="text" name="txtTitulo" id="txtTitulo" placeholder="Ingrese Titulo" required
+                    minlength="2" maxlength="50" value="{{noticia.titulo}}">
+            </div>
+            <div class="col-12 d-flex justify-content-center">
+                <label>Autor</label>
+            </div>
+            <div class="col-12 d-flex justify-content-center">
+                <input class="col-sm" type="text" name="txtAutor" id="txtAutor" placeholder="Ingrese Autor" required
+                    minlength="2" maxlength="15" value="{{noticia.autor}}">
+            </div>
+            <div class="col-12 d-flex justify-content-center">
+                <label>Descripcion</label>
+            </div>
+            <div class="col-12 d-flex justify-content-center">
+                <input class="col-sm" type="text" name="txtDesc" id="txtDesc" placeholder="Ingrese Descripcion" required
+                    minlength="2" maxlength="350" value="{{noticia.descripcion}}">
+            </div>
+            <div style="margin: 10px;">
+                <h3>Imagen actual :</h3> <a href=" {{noticia.imagen.url}}">{{noticia.imagen.url}}</a>
+            </div>
+            <div class="col-12 d-flex justify-content-center">
+                <input class="col-xl" type="file" name="txtImg" id="txtImg" placeholder="Ingrese Imagenes">
+            </div>
+            <select name="cboCategoria" id="cboCategoria">
+                {% for item in Categorias %}
+                    {% if item.nombre_noticia == noticia.categoria.nombre_noticia %}
+                        <option selected> {{item.nombre_noticia}}</option>
+                    {% else %}
+                        <option>{{item.nombre_noticia}}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+
+            <div class="col-12 d-flex justify-content-center">
+                <input type="submit" name="btn-registrar" value="Modificar">
+                <input type="button" name="btn-registrar" value="Cancelar">
+            </div>
+    </div>
+</div>
+</form>
+<div style="text-align: center; color: rgb(167, 10, 10);font-size: xx-large;">
+    {{mensaje}}
+</div>
+</div>
+</div>
+{% endblock contenido %}
+{% block js %}
+<!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+{% endblock js %}
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+
+        </div>
+        <div class="col">
+            2 of 2
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            1 of 3
+        </div>
+        <div class="col">
+            2 of 3
+        </div>
+        <div class="col">
+            3 of 3
+        </div>
+    </div>
+</div>

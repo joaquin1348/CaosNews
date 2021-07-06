@@ -1,0 +1,13 @@
+{% extends "base_formu.html" %}
+{% load static %}
+{% block contenido %}
+<div class="container">
+    <div class="row justify-content-md-center">
+        <h1 style="text-align: center;padding: auto;color:red;font-family: monospace;">ERROR</h1>
+        <h3 style="text-align: center;font-family: monospace;">requiere elevacion de privilegios</h3>
+    </div>
+    <div class="row">
+        <img src="{% static 'img/error.svg' %}" alt="" width="200px" height="750px">
+    </div>
+</div>
+{% endblock contenido %}

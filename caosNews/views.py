@@ -17,10 +17,19 @@ def index(request):
 
 
 def galeria(request):
-    noticias = Noticia.objects.all() #select * from Noticia
+    noticias = Noticia.objects.filter(publicar=True)
     categorias = Categoria.objects.all()
     contexto = {"noticias":noticias,"categorias":categorias}
     return render(request,"galeria.html",contexto)
+
+def noticia1(request):
+    return render(request,"noticia1.html")
+
+def noticia2(request):
+    return render(request,"noticia2.html")
+
+def noticia3(request):
+    return render(request,"noticia3.html")
 
 def autores(request):
     noticias_t = Noticia.objects.all()
@@ -87,13 +96,25 @@ def filtro_categoria(request):
     contexto = {"noticias":noticias,"categorias":categorias}
     return render(request,"galeria.html",contexto)
 
+def filtro_descripcion(request):
+    noticias = Noticia.objects.all()
+    categorias = Categoria.objects.all()
+    if request.POST:
+        texto = request.POST.get("txtDesc")
+        noticias = Noticia.objects.filter(descripcion__contains=texto)
+    contexto = {"noticias":noticias,"categorias":categorias}
+    return render(request, "galeria.html",contexto)
+
+
 def filtro_autor(request):
     noticias_t = Noticia.objects.all()
+    cant = Noticia.objects.all().count()
+    categorias = Categoria.objects.all()
     if request.POST:
         autor = request.POST.get("txtAutor")
         noticias_a = Noticia.objects.filter(autor=autor)
-        contexto = {"noticias":noticias_t,"noti_a":noticias_a}
-        
+        cant = Noticia.objects.filter(autor=autor).count()
+        contexto = {"noticias":noticias_t,"noti_a":noticias_a,"categorias":categorias,"cantidad":cant}
     return render(request,"autores.html",contexto)
     
 
@@ -130,8 +151,9 @@ def registro(request):
     noticia = Noticia.objects.all()    
     contexto = {'Categorias':cate,"mensaje":mensaje,"noticia":noticia}
     return render(request,"registro.html",contexto)
+
 @login_required(login_url='/iniciar/')
-@permission_required('caosNews.delete_noticia',login_url='/login')
+@permission_required('caosNews.delete_noticia',login_url='/error')
 def eliminar(request,id):
     try:
         noti = Noticia.objects.get(titulo=id)
@@ -139,6 +161,56 @@ def eliminar(request,id):
         mensaje = "elimino noticia"
     except:
         mensaje="no elimino noticia"
+        
+    categorias= Categoria.objects.all()
+    noticia = Noticia.objects.all()    
+    contexto = {'Categorias':categorias,"mensaje":mensaje,"noticia":noticia}
+    return render(request,"registro.html",contexto)
+
+def error(request):
+    return render(request,"error.html")
+
+@login_required(login_url='/iniciar/')
+@permission_required('caosNews.delete_noticia',login_url='/error')
+def modificar(request):
+    mensaje=""
+    if request.POST:
+        titulo = request.POST.get("txtTitulo")
+        autor = request.POST.get("txtAutor")
+        desc = request.POST.get("txtDesc")
+        categoria = request.POST.get("cboCategoria")
+        obj_cate = Categoria.objects.get(nombre_noticia=categoria)
+        imagen = request.FILES.get("txtImg")
+
+        try:
+            noticia = Noticia.objects.get(titulo=titulo)
+            noticia.titulo = titulo
+            noticia.autor = autor
+            noticia.descripcion = desc
+            if imagen is not None:
+                noticia.imagen = imagen
+
+            noticia.categoria = obj_cate
+            noticia.comentario = '--'
+            noticia.save()
+            mensaje="modifico noticia"
+        except:
+            mensaje='no modifico'
+
+    cate=Categoria.objects.all()
+    noticia = Noticia.objects.all()    
+    contexto = {'Categorias':cate,"mensaje":mensaje,"noticia":noticia}
+    return render(request,"registro.html",contexto)
+
+@login_required(login_url='/iniciar/')
+def buscar_modificar(request,id):
+    try:
+        noti = Noticia.objects.get(titulo=id)
+        categorias= Categoria.objects.all()
+        contexto = {'Categorias':categorias,"noticia":noti}
+        return render(request,"modificar.html",contexto)
+    except:
+        mensaje="no encontro noticia"
         
     categorias= Categoria.objects.all()
     noticia = Noticia.objects.all()    

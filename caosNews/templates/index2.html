@@ -3,6 +3,53 @@
 
 
 {% block contenido%}
+<div style="padding : 0px; margin-top: 0px;">
+
+    <div class="bg-primary col-md">
+        <div>
+            <form action="{% url 'FILTROD' %}" method="POST">
+                <div style="text-align: center;">
+                    {% csrf_token %}
+                    <h4>Filtro por descripcion de Noticia:</h4>
+                    <input type="text" name="txtDesc" id="txtDesc">
+                    <button class="btn btn-success" type="submit" value="Filtrar">Filtrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col" style="background-color: tomato;">
+        <div>
+            <form action="{% url 'FILTROC' %}" method="POST">
+                <div style="text-align: center;">
+                    {% csrf_token %}
+                    <h4>Filtro por Categoria de Noticias:</h4>
+                    <select name="cboCategoria" id="cboCategoria">
+                        {% for reg in categorias %}
+                        <option>{{reg.nombre_noticia}}</option>
+                        {% endfor %}
+                    </select>
+                    <button class="btn btn-success" type="submit" value="Filtrar">Filtrar</button>
+            </form>
+        </div>
+    </div>
+        <div>
+            <div class="bg-secondary col-md">
+                <form action="{% url 'FILTROA' %}" method="POST">
+                    <div style="text-align: center;">
+                        {% csrf_token %}
+                        <h4>Filtro por Autores de Noticias:</h4>
+                        <select name="txtAutor" id="txtAutor">
+                            {% for x in noticias %}
+                            <option>{{x.autor}}</option>
+                            {% endfor %}
+                        </select>
+                        <button class="btn btn-success" type="submit" value="Filtrar">Filtrar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 <!--Acerca de nosotros-->
 <section id="blog">
     <div class="row">
@@ -42,12 +89,6 @@
     </div>
     </div>
 </section>
-
-</div>
-</div>
-
-
-
 <!--Contenido-->
 <main>
     <div class="destacado">
@@ -66,7 +107,7 @@
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti quasi dolores, ipsum velit nemo
                 consequuntur. Ea voluptate harum beatae officiis, pariatur impedit tempore quos quis doloribus
                 cumque, veniam sit quam.</p>
-            <a href="noticia1.html"> <img src="{% static 'img/boton.jpg' %}" alt="" width="60%" height="15%"></a>
+            <a href="{% url 'NOTI1' %}"> <img src="{% static 'img/boton.jpg' %}" alt="" width="60%" height="15%"></a>
 
 
         </div>
@@ -77,7 +118,7 @@
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur maiores quis, distinctio
                 perspiciatis, non magni laborum quas quam ex, id eos ipsa tenetur modi unde esse et inventore quos
                 repudiandae.</p>
-            <a href="noticia2.html"> <img src="{% static 'img/boton.jpg' %}" alt="" width="60%" height="15%"></a>
+            <a href="{% url 'NOTI2' %}"> <img src="{% static 'img/boton.jpg' %}" alt="" width="60%" height="15%"></a>
         </div>
         <div class="col">
             <img src="https://www.cooperativa.cl/noticias/site/artic/20210423/imag/foto_0000000920210423155550.jpg"
@@ -86,7 +127,7 @@
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga doloremque non commodi iusto quo
                 laborum tempore exercitationem dolores dolor deleniti? Eos exercitationem quod enim est natus eum
                 reprehenderit nisi. Consectetur.</p>
-            <a href="noticia3.html"> <img src="{% static 'img/boton.jpg' %}" alt="" width="60%" height="15%"></a>
+            <a href="{% url 'NOTI3' %}"> <img src="{% static 'img/boton.jpg' %}" alt="" width="60%" height="15%"></a>
         </div>
 
     </div>
@@ -120,16 +161,6 @@
         </div>
     </div>
 </main>
-<section>
-    <div class="row">
-        {% for x in noticias %}
-            {% if x.publicar=True %}
-            
-            {% else %}
-            {% endif %}
-        {% endfor %}
-    </div>
-</section>
 <footer>
     <div class="form-container bg-light h-100">
         <article class="card-body mx-auto" style="max-width: 1000px;">

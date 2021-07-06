@@ -1,3 +1,4 @@
+{% extends "base_formu.html" %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -12,115 +13,13 @@
         crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/estilo.css' %}">
     <link rel="stylesheet" href="{% static 'font.css' %}">
-
-
 </head>
+{% block contenido %}
+
 
 <body>
     <div class="container-fluid">
-
-        <!-- Barra de navegacion -->
-
-
         <div class="row">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="#">
-
-                        <img class="logo" src="{% static 'img/6b9b49a725284506aae8a14b76a21b77.ico' %}" alt=""
-                            width="70%">
-
-                    </a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="index2.html">Inicio</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Autores destacados</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Nosotros</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="contacto.html">Contactanos</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" href="inicio-registrar.html"><strong>iniciar
-                                        sesión</strong></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" href="inicio-registrar.html"><strong>Registrarse</strong></a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="galeria.html" id="navbarDropdown"
-                                    role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Galeria
-                                </a>
-
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="galeria.html">Politica</a></li>
-                                    <li><a class="dropdown-item" href="galeria.html">Deportes</a></li>
-                                    <li><a class="dropdown-item" href="galeria.html">Internacional</a></li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li><a class="dropdown-item" href="#">Noticias Destacadas</a></li>
-                                </ul>
-
-                            </li>
-                        </ul>
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="{% url 'IND' %}">Inicio</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Autores destacados</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="nosotros.html">Nosotros</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="contacto.html">Contactanos</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" href="{% url 'FORMU' %}"><strong>iniciar
-                                        sesión</strong></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" href="{% url 'FORMU' %}"><strong>Registrarse</strong></a>
-                            </li>
-
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="{% url 'GALE' %}" id="navbarDropdown"
-                                    role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Galeria
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="{% url 'GALE' %}">Politica</a></li>
-                                    <li><a class="dropdown-item" href="{% url 'GALE' %}">Deportes</a></li>
-                                    <li><a class="dropdown-item" href="{% url 'GALE' %}">Internacional</a></li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li><a class="dropdown-item" href="#">Noticias Destacadas</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-
-                        <form class="d-flex" action="">
-                            <input class="form-control me-2" name="txtBuscar" type="search" placeholder="Buscar"
-                                aria-label="Search">
-                            <button class="btn btn-outline-success" type="submit">Buscar</button>
-                        </form>
-                    </div>
-                </div>
-            </nav>
 
             <!--Contenido-->
             <div class="destacado">
@@ -220,7 +119,7 @@
             </button>
         </div>
     </div>
-
+{% endblock contenido %}
 
     <div class="social-bar">
         <a href="https://www.facebook.com" class="icon icon-facebook" target="_blank"></a>
