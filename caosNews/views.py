@@ -132,7 +132,7 @@ def registro(request):
         except:
 
             titulo = request.POST.get("txtTitulo")
-            autor = request.POST.get("txtAutor")
+            autor = request.user.username
             desc = request.POST.get("txtDesc")
             categoria = request.POST.get("cboCategoria")
             obj_cate = Categoria.objects.get(nombre_noticia=categoria)
@@ -148,7 +148,7 @@ def registro(request):
             noti.save()
             mensaje='grabo'
 
-    noticia = Noticia.objects.all()    
+    noticia = Noticia.objects.filter(autor=request.user.username)    
     contexto = {'Categorias':cate,"mensaje":mensaje,"noticia":noticia}
     return render(request,"registro.html",contexto)
 
@@ -163,7 +163,7 @@ def eliminar(request,id):
         mensaje="no elimino noticia"
         
     categorias= Categoria.objects.all()
-    noticia = Noticia.objects.all()    
+    noticia = Noticia.objects.filter(autor=request.user.username)    
     contexto = {'Categorias':categorias,"mensaje":mensaje,"noticia":noticia}
     return render(request,"registro.html",contexto)
 
@@ -176,7 +176,7 @@ def modificar(request):
     mensaje=""
     if request.POST:
         titulo = request.POST.get("txtTitulo")
-        autor = request.POST.get("txtAutor")
+        autor = request.user.username
         desc = request.POST.get("txtDesc")
         categoria = request.POST.get("cboCategoria")
         obj_cate = Categoria.objects.get(nombre_noticia=categoria)
@@ -198,7 +198,7 @@ def modificar(request):
             mensaje='no modifico'
 
     cate=Categoria.objects.all()
-    noticia = Noticia.objects.all()    
+    noticia = Noticia.objects.filter(autor=request.user.username)    
     contexto = {'Categorias':cate,"mensaje":mensaje,"noticia":noticia}
     return render(request,"registro.html",contexto)
 
@@ -216,3 +216,22 @@ def buscar_modificar(request,id):
     noticia = Noticia.objects.all()    
     contexto = {'Categorias':categorias,"mensaje":mensaje,"noticia":noticia}
     return render(request,"registro.html",contexto)
+# permite realizar peticione HTTP
+import requests
+
+
+def consumir_api(request):
+    
+
+    response = requests.get("http://127.0.0.1:8787/api/noticias/")
+    noticias = response.json()
+
+    response = requests.get("http://127.0.0.1:8787/api/categorias/")
+    categorias= response.json()
+    if request.POST:
+        autor = request.POST.get("txtAutor")
+        response = requests.get("http://127.0.0.1:8787/api/noticia/"+autor+"/")
+        noticias = response.json()
+
+    contexto = {"noticias":noticias,"categorias":categorias}
+    return render(request,"consumir_api.html",contexto)

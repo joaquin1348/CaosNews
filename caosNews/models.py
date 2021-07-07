@@ -19,3 +19,11 @@ class Noticia(models.Model):
     
     def _str_(self):
         return self.nombre
+class Contacto(models.Model):
+    nombre = models.CharField(primary_key=True,max_length=80)
+    apellidos = models.TextField(max_length=20)
+    correo = models.TextField()
+    comentario = models.TextField(max_length=350)
+
+    def __str__(self):
+        return self.nombre

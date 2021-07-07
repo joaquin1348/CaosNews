@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from .views import index, galeria, noticia1, noticia2, noticia3, autores, registro, nosotros, contacto, iniciar, registrarse,noti, filtro_categoria, filtro_autor, filtro_descripcion, cerrar_sesion, eliminar, error, buscar_modificar, modificar
+from .views import index, galeria, noticia1, noticia2, noticia3, autores, registro, nosotros, contacto, iniciar, registrarse,noti, filtro_categoria, filtro_autor, filtro_descripcion, cerrar_sesion, eliminar, error, buscar_modificar, modificar, consumir_api
 
 urlpatterns = [
     path('',index,name='IND'),
@@ -23,4 +23,5 @@ urlpatterns = [
     path('error/',error,name='ERROR'),
     path('buscar_modificar/<id>/',buscar_modificar,name='BUSCARM'),
     path('modificar/',modificar,name='MODI'),
+    path('consumir_api/',consumir_api,name='API'),
 ]

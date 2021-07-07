@@ -1,0 +1,54 @@
+{% extends "base_formu.html" %}
+{% load static %}
+{% block contenido %}
+<div class="container-fluid">
+    <h1 style="text-align: center;">Galeria de imagenes: API</h1>
+    <p style="text-align: center;">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit nisi, et hic, tenetur perferendis facilis expedita
+        mollitia quae, modi beatae fugiat saepe porro. Natus quasi sunt voluptates? Et, nisi eveniet!</p>
+    <div class="col" style="background-color: tomato;">
+        <div>
+            <form action="{% url 'FILTROC' %}" method="POST">
+                <div style="text-align: center;">
+                    {% csrf_token %}
+                    <h4>Filtro por Categoria de Noticias:</h4>
+                    <select name="cboCategoria" id="cboCategoria">
+                        {% for reg in categorias %}
+                        <option>{{reg.nombre_noticia}}</option>
+                        {% endfor %}
+                    </select>
+                    <button class="btn btn-success" type="submit" value="Filtrar">Filtrar</button>
+            </form>
+
+            <form action="{% url 'API' %}" method="POST">
+                <div style="text-align: center;">
+                    {% csrf_token %}
+                    <h4>Buscar autor de noticias:</h4>
+                    <input type="text" name="txtAutor">
+
+                    <button class="btn btn-success" type="submit" value="Buscar">Buscar</button>
+                    <button class="btn btn-success" type="text" name="txtAutor" value="Filtrar">Filtrar</button>
+            </form>
+        </div>
+    </div>
+    <div class="container" style="margin-top: 15px;padding: 15px;">
+        {% for item in noticias %}
+        <div class="row" style="padding:15px;">
+
+            <div class="col-6">
+
+                <a href="{{item.imagen}}" data-title="{{item.titulo}}"></a>
+                <img src="{{item.imagen}}" alt="" width="250px" height="250px">
+            </div>
+            <div class="col-6">
+                <h3 style="text-align: center;">{{item.titulo}}</h3>
+                <h5>
+                    <a href="{% url 'NOTI' item.titulo%}">Leer Noticia</a>
+                </h5>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+</div>
+{% endblock contenido %}

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import generics
-from caosNews.models import Noticia
-from .serializers import NoticiasSerializer
+from caosNews.models import Noticia, Categoria
+from .serializers import NoticiasSerializer, CategoriaSerializer
 
 class NoticiasViewSet(generics.ListAPIView):
     queryset = Noticia.objects.all()
@@ -16,3 +16,7 @@ class NoticiaBuscarViewSet(generics.ListAPIView):
     def get_queryset(self):
         nombre_autor = self.kwargs['autor']
         return Noticia.objects.filter(autor=nombre_autor)
+
+class CategoriaViewSet(generics.ListAPIView):
+    queryset = Categoria.objects.all()
+    serializer_class = CategoriaSerializer

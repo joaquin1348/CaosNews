@@ -51,6 +51,9 @@
                                     <a class="nav-link" href="{% url 'CONT' %}">Contactanos</a>
                                 </li>
                                 <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'API' %}">API Rest</a>
+                                </li>
+                                <li class="nav-item">
                                     <a class="nav-link" href="{% url 'GALE' %}">Galeria</a>
                                 </li>
                                 {% if user.is_authenticated %}
@@ -187,7 +190,7 @@
         integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
         </script>
 
-   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="{% static 'js/popper.min.js' %}"></script>
     <!--<script src="{% static 'js/bootstrap.min.js' %}"></script>-->
     <script src="{% static 'js/validaciones.js' %}"></script>
