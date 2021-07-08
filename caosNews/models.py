@@ -1,5 +1,5 @@
 from django.db import models
-
+import datetime
 # Create your models here.
 class Categoria(models.Model):
     nombre_noticia = models.CharField(primary_key=True,max_length=25)
@@ -15,6 +15,7 @@ class Noticia(models.Model):
     imagen = models.ImageField(upload_to='noticias',null=True)
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
     comentario = models.TextField (null=True,default='sin comentario')
+    fecha = models.DateField(default=datetime.date.today)
     publicar = models.BooleanField(default=False)
     
     def _str_(self):
@@ -24,6 +25,7 @@ class Contacto(models.Model):
     apellidos = models.TextField(max_length=20)
     correo = models.TextField()
     comentario = models.TextField(max_length=350)
+    
 
     def __str__(self):
         return self.nombre

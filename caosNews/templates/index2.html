@@ -1,8 +1,59 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block carrusel %}
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+            aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+            aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+            aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
+            aria-label="Slide 4"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="{% static 'img/principio.svg' %}" class="d-block w-100" alt="..." height="600px">
+            <div class="carousel-caption d-none d-md-block">
+                <h3> <strong>Noticia 2021</strong> </h3>
+            </div>
+        </div>
+        {% for item in carru %}
+        <div class="carousel-item">
+            <a href="{% url 'NOTI' %}">
+                <img src="{{item.imagen.url}}" class="d-block w-100" alt="..." height="600px">
+                <div class="carousel-caption d-none d-md-block">
+                    <h3> <strong>{{item.titulo}}</strong> </h3>
+                    <p>Dolorum rem error quia iste provident nam numquam, veniam optio amet vel eaque saepe quae
+                        praesentium
+                        rerum quod, cumque, nulla quisquam?</p>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+{% endblock carrusel %}
 
-{% block contenido%}
+
+
+
+{% block contenido %}
+
+
+
 <div style="padding : 0px; margin-top: 0px;">
 
     <div class="bg-primary col-md">
@@ -32,23 +83,23 @@
             </form>
         </div>
     </div>
-        <div>
-            <div class="bg-secondary col-md">
-                <form action="{% url 'FILTROA' %}" method="POST">
-                    <div style="text-align: center;">
-                        {% csrf_token %}
-                        <h4>Filtro por Autores de Noticias:</h4>
-                        <select name="txtAutor" id="txtAutor">
-                            {% for x in noticias %}
-                            <option>{{x.autor}}</option>
-                            {% endfor %}
-                        </select>
-                        <button class="btn btn-success" type="submit" value="Filtrar">Filtrar</button>
-                    </div>
-                </form>
-            </div>
+    <div>
+        <div class="bg-secondary col-md">
+            <form action="{% url 'FILTROA' %}" method="POST">
+                <div style="text-align: center;">
+                    {% csrf_token %}
+                    <h4>Filtro por Autores de Noticias:</h4>
+                    <select name="txtAutor" id="txtAutor">
+                        {% for x in noticias %}
+                        <option>{{x.autor}}</option>
+                        {% endfor %}
+                    </select>
+                    <button class="btn btn-success" type="submit" value="Filtrar">Filtrar</button>
+                </div>
+            </form>
         </div>
     </div>
+</div>
 </div>
 <!--Acerca de nosotros-->
 <section id="blog">
@@ -100,37 +151,18 @@
             veritatis molestias. </p>
     </div>
     <div class="row">
-        <div class="col">
-            <img src="https://www.cooperativa.cl/noticias/site/artic/20210426/imag/foto_0000000120210426114056.jpg"
-                alt="" width="100%">
-            <h2>Chernóbil: A 35 años de la tragedia que marcó a todos, especialmente a los nacidos en 1986</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti quasi dolores, ipsum velit nemo
-                consequuntur. Ea voluptate harum beatae officiis, pariatur impedit tempore quos quis doloribus
-                cumque, veniam sit quam.</p>
-            <a href="{% url 'NOTI1' %}"> <img src="{% static 'img/boton.jpg' %}" alt="" width="60%" height="15%"></a>
+        {% for item in noticias %}
 
-
-        </div>
         <div class="col">
-            <img src="https://www.cooperativa.cl/noticias/site/artic/20210425/imag/foto_0000000120210425192621.jpg"
-                alt="" width="100%">
-            <h2>Brasil superó las 390.000 muertes y abril ya es el mes más letal de la pandemia</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur maiores quis, distinctio
-                perspiciatis, non magni laborum quas quam ex, id eos ipsa tenetur modi unde esse et inventore quos
-                repudiandae.</p>
-            <a href="{% url 'NOTI2' %}"> <img src="{% static 'img/boton.jpg' %}" alt="" width="60%" height="15%"></a>
-        </div>
-        <div class="col">
-            <img src="https://www.cooperativa.cl/noticias/site/artic/20210423/imag/foto_0000000920210423155550.jpg"
-                alt="" width="100%">
-            <h2>China prepara lanzamiento de módulo central de la estación espacial</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga doloremque non commodi iusto quo
-                laborum tempore exercitationem dolores dolor deleniti? Eos exercitationem quod enim est natus eum
-                reprehenderit nisi. Consectetur.</p>
-            <a href="{% url 'NOTI3' %}"> <img src="{% static 'img/boton.jpg' %}" alt="" width="60%" height="15%"></a>
+            <img src="{{item.imagen.url}}" alt="" width="250px" height="250px">
+            <h1 style="color:tomato;">{{item.titulo}}</h1>
+            <p>Dolorum rem error quia iste provident nam numquam, veniam optio amet vel eaque saepe quae praesentium
+                rerum quod, cumque, nulla quisquam?</p>
+            <h3><a href="{% url 'NOTI' item.titulo%}">Leer Noticia</a></h3>
         </div>
 
     </div>
+    {% endfor %}
     </div>
     <div class="multimedia">
         <h1> <strong>Multimedia</strong></h1>
@@ -178,4 +210,4 @@
         </article>
     </div>
 </footer>
-{% endblock contenido%}
+{% endblock contenido %}

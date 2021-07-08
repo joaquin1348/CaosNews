@@ -11,7 +11,7 @@
 {% endblock css %}
 {% block contenido %}
 <section id='bienvenido'>
-  <h1 class="titulo">Sistema de administracion de Noticias</h1>
+  <h1 class="titulo" style="text-align: center;">Sistema de administracion de Noticias</h1>
   <h3>Usuario: <b>{{user.username}}</b></h3>
 </section>
 <div class="container pt-md-2">
@@ -25,14 +25,6 @@
       <div class="col-12 d-flex justify-content-center">
         <input class="col-sm" type="text" name="txtTitulo" id="txtTitulo" placeholder="Ingrese Titulo" required
           minlength="2" maxlength="80">
-      </div>
-      <div class="col-12 d-flex justify-content-center">
-        <label>Nombre de Autor</label>
-      </div>
-
-      <div class="col-12 d-flex justify-content-center">
-        <input class="col-sm" type="text" name="txtAutor" id="txtAutor" placeholder="Ingrese nombre de Autor" required
-          minlength="2" maxlength="20">
       </div>
       <div class="col-12 d-flex justify-content-center">
         <label>Descripción</label>

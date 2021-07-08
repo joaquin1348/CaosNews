@@ -89,92 +89,17 @@
             {% endblock nav %}
     </header>
     <!-- Carrusel-->
-    <div class="row">
-        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
-                    aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
-                    aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
-                    aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3"
-                    aria-label="Slide 3"></button>
-            </div>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-
-                    <div class="carrousel-item">
-                        <img src="https://www.cooperativa.cl/noticias/site/artic/20200218/imag/foto_0000008020200218131350.jpg"
-                            class="d-block w-100" height="600px" alt="..." width="100%">
-                    </div>
-                    <div class="carousel-caption d-none d-md-block">
-                        <h3> <strong> Google Earth liberó imágenes satelitales de Chile en 4K </strong> </h3>
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi explicabo blanditiis
-                            vero voluptates
-                            labore officia quas fugit ab incidunt error, repellendus nobis nam modi quam a harum
-                            quasi sequi illum.</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="https://www.nationalgeographic.com.es/medio/2018/06/08/el-cuarto-arbitro-llega-al-futbol_0601534d.jpg"
-                        class="d-block w-100" height="600px" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h3> <strong> ¿La tecnología está matando al fútbol? </strong> </h3>
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi explicabo blanditiis
-                            vero voluptates
-                            labore officia quas fugit ab incidunt error, repellendus nobis nam modi quam a harum
-                            quasi sequi illum.</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="https://canamo.net/sites/default/files/styles/max_1300x1300/public/images/2021/03/24/hojas-que-comen-3.jpg?itok=ZXj1Z9dS"
-                        class="d-block w-100" height="600px" width="" alt="...">
-
-                    <div class="carousel-caption d-none d-md-block">
-                        <h3> <strong> La ONU reconoce oficialmente las propiedades medicinales del cannabis
-                            </strong> </h3>
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi explicabo blanditiis
-                            vero voluptates
-                            labore officia quas fugit ab incidunt error, repellendus nobis nam modi quam a harum
-                            quasi sequi illum.</p>
-                        </p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="https://images.pexels.com/photos/4613911/pexels-photo-4613911.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-                        class="d-block w-100" height="500px" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h3> <strong> EE. UU.: nueva polémica tras muerte de una joven afroamericana a manos de la
-                                policía </strong> </h3>
-                        <p>Some representative placeholder content for the third slide.</p>
-                    </div>
-                </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
-                data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
-                data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div>
-    </div>
-    </section>
-
-    </div>
-    </div>
+    {% block carrusel %}
+    
+    {% endblock carrusel %}
 
 
 
     <!--Contenido-->
     <main>
-        {% block contenido%}
+        {% block contenido %}
 
-        {% endblock contenido%}
+        {% endblock contenido %}
     </main>
 
     <!--Social Bar !-->
@@ -186,9 +111,8 @@
         <a href="https://www.instagram.com" class="icon icon-instagram" target="_blank"></a>
     </div>
 
-    <script src="cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
-        </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
 
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="{% static 'js/popper.min.js' %}"></script>

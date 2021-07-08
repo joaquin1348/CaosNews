@@ -10,9 +10,10 @@ from django.contrib.auth import authenticate,logout,login
 from django.contrib.auth.decorators import login_required,permission_required
 
 def index(request):
-    noticias = Noticia.objects.all()
+    noticias = Noticia.objects.all()[:3]
     cat = Categoria.objects.all()
-    context = {"categorias":cat,"noticias":noticias}
+    carru_noti= Noticia.objects.filter(publicar=True).order_by('-fecha')[:3]
+    context = {"categorias":cat,"noticias":noticias,"carru":carru_noti}
     return render(request,"index2.html",context)
 
 
